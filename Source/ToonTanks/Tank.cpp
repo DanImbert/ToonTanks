@@ -50,6 +50,9 @@ void ATank::HandleDestruction()
     Super::HandleDestruction();
     SetActorHiddenInGame(true);
     SetActorTickEnabled(false);
+    bAlive = false;
+
+
 }
 
 
@@ -69,7 +72,7 @@ void ATank::Move(float Value)
     DeltaLocation.X = Value * Speed * UGameplayStatics::GetWorldDeltaSeconds(this);
 
     AddActorLocalOffset(DeltaLocation, true);
-    GetController();
+   
     
 }
 
@@ -79,4 +82,5 @@ void ATank::Turn(float Value)
     // Yaw = Value * DeltaTime * TurnRate
     DeltaRotation.Yaw = Value * TurnRate * UGameplayStatics::GetWorldDeltaSeconds(this);
     AddActorLocalRotation(DeltaRotation, true);
+    GetController();
 }
